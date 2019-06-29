@@ -47,12 +47,14 @@ export default {
   position: relative;
   background-color: #ffffff;
 }
+
 .background {
   width: 256px;
   position: relative;
   top: 122px;
   left: 122px;
 }
+
 .background img {
   width: 256px;
 }

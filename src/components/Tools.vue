@@ -1,12 +1,8 @@
 <template>
   <div class="tools">
     <input type="file" v-on:change="handleImageUpload" accept="image/*" />
-    <div>
-      Hand Color: <input type="color" v-on:change="changeHandColor" v-bind:value="currentHandColor" />
-    </div>
-    <div>
-      Face Color: <input type="color" v-on:change="changeFaceColor" v-bind:value="currentFaceColor" />
-    </div>
+    Hand Color: <input type="color" v-on:change="changeHandColor" v-bind:value="currentHandColor" />
+    Face Color: <input type="color" v-on:change="changeFaceColor" v-bind:value="currentFaceColor" />
   </div>
 </template>
 
@@ -46,6 +42,10 @@ export default {
   width: 500px;
   margin: 20px auto;
   position: relative;
-  text-align: left;
+  text-align: center;
+}
+
+input[type='file'] {
+  width: 200px;
 }
 </style>

@@ -93,21 +93,26 @@ export default {
 svg {
   display: none;
 }
+
 svg.current {
   display: inline;
 }
+
 .feature {
   position: absolute;
   pointer-events: none;
 }
+
 .feature path, .feature ellipse {
   pointer-events: auto;
 }
+
 .active {
   margin-top: -1px;
   margin-left: -1px;
   border: 1px solid #000000;
 }
+
 .move-tab, .pull-tab {
   box-sizing: border-box;
   pointer-events: auto;
@@ -118,14 +123,17 @@ svg.current {
   height: 10px;
   display: none;
 }
+
 .active .move-tab, .active .pull-tab {
   display: block;
 }
+
 .move-tab {
   top: 5px;
   left: 5px;
   cursor: move;
 }
+
 .pull-tab {
   bottom: -5px;
   right: -5px;
