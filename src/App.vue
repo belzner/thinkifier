@@ -2,16 +2,19 @@
   <div id="app">
     <img id="logo" alt="Thinkifier" src="./assets/thinking-face.svg">
     <Workspace></Workspace>
+    <Tools></Tools>
   </div>
 </template>
 
 <script>
 import Workspace from './components/Workspace.vue'
+import Tools from './components/Tools.vue'
 
 export default {
   name: 'app',
   components: {
-    Workspace
+    Workspace,
+    Tools
   }
 }
 </script>

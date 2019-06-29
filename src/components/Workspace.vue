@@ -1,27 +1,38 @@
 <template>
-  <div class="workspace" v-on:click="$root.$emit('remove-active')" v-on:dragover.prevent="doNothing" v-on:drop.prevent="doNothing">
+  <div class="workspace" v-bind:style="{ width: size+'px', height: size+'px' }" v-on:click="$root.$emit('remove-active')" v-on:dragover.prevent="doNothing" v-on:drop.prevent="doNothing">
     <div class="background">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
-        <circle fill="#FFCB4C" cx="18" cy="17.018" r="17"/>
-      </svg>
+      <img v-bind:src="background"/>
     </div>
-    <Feature type="left-eye"></Feature>
-    <Feature type="right-eye"></Feature>
-    <Feature type="mouth"></Feature>
-    <Feature type="hand"></Feature>
+    <Feature type="left-eye" v-bind:workspace-size="size" v-bind:init-values="{ top: 144, left: 171, size: 86 }"></Feature>
+    <Feature type="right-eye" v-bind:workspace-size="size" v-bind:init-values="{ top: 168, left: 265, size: 71 }"></Feature>
+    <Feature type="mouth" v-bind:workspace-size="size" v-bind:init-values="{ top: 228, left: 206, size: 94 }"></Feature>
+    <Feature type="hand" v-bind:workspace-size="size" v-bind:init-values="{ top: 242, left: 158, size: 150 }"></Feature>
   </div>
 </template>
 
 <script>
 import Feature from './Feature.vue'
+import Background from '../assets/face-circle.svg'
 
 export default {
   name: 'Workspace',
   components: {
     Feature
   },
+  data: function () {
+    return {
+      size: 500,
+      background: Background
+    }
+  },
+  mounted () {
+    this.$root.$on('change-background', this.changeBackground);
+  },
   methods: {
-    doNothing: function () {}
+    doNothing: function () {},
+    changeBackground: function (e) {
+      this.background = e;
+    }
   }
 }
 </script>
@@ -30,8 +41,6 @@ export default {
 .workspace {
   margin: auto;
   position: relative;
-  width: 500px;
-  height: 500px;
   background-color: #ffffff;
 }
 .background {
@@ -39,5 +48,8 @@ export default {
   position: relative;
   top: 122px;
   left: 122px;
+}
+.background img {
+  width: 256px;
 }
 </style>
