@@ -25,13 +25,13 @@ export default {
   props: {
     type: String,
     workspaceSize: Number,
-    initValues: Object
+    initValues: Object,
+    handColor: String,
+    faceColor: String
   },
   data: function () {
     return {
       isActive: false,
-      handColor: '#F19020',
-      faceColor: '#65471B',
       startX: null,
       startY: null,
       startTop: null,

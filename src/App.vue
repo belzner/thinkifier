@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <img id="logo" alt="Thinkifier" src="./assets/thinking-face.svg">
-    <Workspace></Workspace>
-    <Tools></Tools>
+    <Workspace v-bind:handColor="handColor" v-bind:faceColor="faceColor"></Workspace>
+    <Tools v-bind:handColor="handColor" v-bind:faceColor="faceColor"></Tools>
   </div>
 </template>
 
@@ -15,6 +15,24 @@ export default {
   components: {
     Workspace,
     Tools
+  },
+  data: function () {
+    return {
+      handColor: '#F19020',
+      faceColor: '#65471B'
+    }
+  },
+  mounted () {
+    this.$root.$on('change-hand', this.changeHandColor);
+    this.$root.$on('change-face', this.changeFaceColor);
+  },
+  methods: {
+    changeHandColor: function (e) {
+      this.handColor = e;
+    },
+    changeFaceColor: function (e) {
+      this.faceColor = e;
+    }
   }
 }
 </script>
