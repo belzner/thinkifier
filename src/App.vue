@@ -43,13 +43,13 @@ export default {
 </script>
 
 <style>
+body {
+  margin: 0;
+}
+
 #app {
   text-align: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  min-height: 100vh;
   background-color: #d0dff7;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -61,7 +61,8 @@ export default {
 }
 
 .about {
-  margin: 20px auto;
+  margin: 0 auto;
+  padding-bottom: 20px;
   position: relative;
   width: 500px;
 }
