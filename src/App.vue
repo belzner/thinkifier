@@ -1,7 +1,13 @@
 <template>
   <div id="app">
-    <img id="logo" alt="Thinkifier" src="./assets/thinking-face.svg">
-    <Workspace v-bind:handColor="handColor" v-bind:faceColor="faceColor"></Workspace>
+    <svg id="head" viewBox="0 0 500 500" width="128">
+      <image v-bind:href="background" width="256" height="256" x="122" y="122" />
+      <use href="#left-eye" />
+      <use href="#right-eye" />
+      <use href="#mouth" />
+      <use href="#hand" />
+    </svg>
+    <Workspace v-bind:handColor="handColor" v-bind:faceColor="faceColor" v-bind:background="background"></Workspace>
     <Tools v-bind:handColor="handColor" v-bind:faceColor="faceColor"></Tools>
     <div class="about">
       <p>Apply thinky-face features to any image. You can click on the hand, eyes, or mouth to move (upper left) and resize (lower right) them. Change background image and colors above. Screenshot to save.</p>
@@ -14,6 +20,7 @@
 <script>
 import Workspace from './components/Workspace.vue'
 import Tools from './components/Tools.vue'
+import Background from './assets/face-circle.svg'
 
 export default {
   name: 'app',
@@ -24,12 +31,14 @@ export default {
   data: function () {
     return {
       handColor: '#F19020',
-      faceColor: '#65471B'
+      faceColor: '#65471B',
+      background: Background
     }
   },
   mounted () {
     this.$root.$on('change-hand', this.changeHandColor);
     this.$root.$on('change-face', this.changeFaceColor);
+    this.$root.$on('change-background', this.changeBackground);
   },
   methods: {
     changeHandColor: function (e) {
@@ -37,6 +46,9 @@ export default {
     },
     changeFaceColor: function (e) {
       this.faceColor = e;
+    },
+    changeBackground: function (e) {
+      this.background = e;
     }
   }
 }

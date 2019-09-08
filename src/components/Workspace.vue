@@ -3,16 +3,15 @@
     <div class="background">
       <img v-bind:src="background"/>
     </div>
-    <Feature type="left-eye" v-bind:workspace-size="size" v-bind:init-values="{ top: 144, left: 171, size: 86 }" v-bind:handColor="handColor" v-bind:faceColor="faceColor"></Feature>
-    <Feature type="right-eye" v-bind:workspace-size="size" v-bind:init-values="{ top: 168, left: 265, size: 71 }" v-bind:handColor="handColor" v-bind:faceColor="faceColor"></Feature>
-    <Feature type="mouth" v-bind:workspace-size="size" v-bind:init-values="{ top: 228, left: 206, size: 94 }" v-bind:handColor="handColor" v-bind:faceColor="faceColor"></Feature>
-    <Feature type="hand" v-bind:workspace-size="size" v-bind:init-values="{ top: 242, left: 158, size: 150 }" v-bind:handColor="handColor" v-bind:faceColor="faceColor"></Feature>
+    <Feature type="left-eye" v-bind:workspace-size="size" v-bind:init-values="{ top: 150, left: 186, width: 65, height: 74 }" v-bind:handColor="handColor" v-bind:faceColor="faceColor"></Feature>
+    <Feature type="right-eye" v-bind:workspace-size="size" v-bind:init-values="{ top: 178, left: 270, width: 64, height: 53 }" v-bind:handColor="handColor" v-bind:faceColor="faceColor"></Feature>
+    <Feature type="mouth" v-bind:workspace-size="size" v-bind:init-values="{ top: 257, left: 219, width: 67, height: 25 }" v-bind:handColor="handColor" v-bind:faceColor="faceColor"></Feature>
+    <Feature type="hand" v-bind:workspace-size="size" v-bind:init-values="{ top: 247, left: 165, width: 137, height: 130 }" v-bind:handColor="handColor" v-bind:faceColor="faceColor"></Feature>
   </div>
 </template>
 
 <script>
 import Feature from './Feature.vue'
-import Background from '../assets/face-circle.svg'
 
 export default {
   name: 'Workspace',
@@ -21,22 +20,16 @@ export default {
   },
   props: {
     handColor: String,
-    faceColor: String
+    faceColor: String,
+    background: String
   },
   data: function () {
     return {
-      size: 500,
-      background: Background
+      size: 500
     }
-  },
-  mounted () {
-    this.$root.$on('change-background', this.changeBackground);
   },
   methods: {
-    doNothing: function () {},
-    changeBackground: function (e) {
-      this.background = e;
-    }
+    doNothing: function () {}
   }
 }
 </script>
